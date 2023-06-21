@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ec2-user/build/
+    destination: /home/ec2-user/tmp/
 permissions:
   - object: /
     pattern: "**"
@@ -10,9 +10,8 @@ permissions:
     group: ec2-user
 hooks:
   BeforeInstall:
-    - location: bin/deploy-before.sh
+    - location: shellscript/deploy-before.sh
       runas: ec2-user
   ApplicationStart:
-    - location: bin/deploy.sh
+    - location: shellscript/deploy.sh
       runas: ec2-user
-
